@@ -71,6 +71,7 @@ io.on('connection', (socket) => {
   socket.on('typing', (user) => {
     socket.broadcast.emit('typing', user);
   });
+  console.log('Client connected',socket.id);
 
   socket.on('disconnect', () => {
     console.log('Client disconnected',socket.id);
