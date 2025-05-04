@@ -17,7 +17,7 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   const { username, password } = req.body;
   try {
-    console.log('Starting login process for:', username);
+    // console.log('Starting login process for:', username);
     const user = await User.findOne({ username });
     if (!user) {
       console.log('User not found:', username);
