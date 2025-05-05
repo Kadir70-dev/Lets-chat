@@ -21,9 +21,11 @@ const server = http.createServer(app);
 // const io = socketIo(server);
 const io = socketIo(server, {
   cors: {
-    origin: 'http://localhost:3000',
-    // methods: ['GET', 'POST'],
-    credentials: true
+    origin:'*',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+    // origin: 'http://localhost:3000',
+    // credentials: true
   }
 });
 // Connect to MongoDB
@@ -71,13 +73,16 @@ io.on('connection', (socket) => {
   socket.on('typing', (user) => {
     socket.broadcast.emit('typing', user);
   });
-  console.log('Client connected',socket.id);
-
-  socket.on('disconnect', () => {
-    console.log('Client disconnected',socket.id);
-
+  
+  // Handle WebRTC signaling
+  socket.on('videoSignal', (data) => {
+    socket.broadcast.emit('videoSignal', data);
   });
-});
 
+
+socket.on('disconnect', () => {
+  console.log('Client disconnected', socket.id);
+});
+});
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
