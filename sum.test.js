@@ -1,4 +1,4 @@
-const { add, subtract, multiply, divide } = require('./sum');
+const { add, subtract, multiply, divide } = require('./math');
 
 describe('Math operations', () => {
   test('adds 2 + 3 to equal 5', () => {
