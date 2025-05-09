@@ -6,4 +6,5 @@ const router = express.Router();
 router.post('/chatrooms', createChatRoom);
 router.get('/chatrooms', getChatRooms);
 
+
 module.exports = router;
