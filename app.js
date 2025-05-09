@@ -78,7 +78,7 @@ io.on('connection', (socket) => {
   socket.on('videoSignal', (data) => {
     socket.broadcast.emit('videoSignal', data);
   });
-  console.log('Client connected', socket.id);
+  // console.log('Client connected', socket.id);
 
 
 socket.on('disconnect', () => {
