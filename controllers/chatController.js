@@ -37,7 +37,8 @@ exports.getChatRooms = async (req, res) => {
     console.log('Fetching chat rooms from database...');
     const chatRooms = await ChatRoom.find().populate('users', 'username');
 
-    console.log('Chat rooms fetched successfully');
+    console.log('Chat rooms fetched successfully from database');
+    // Log the chat rooms for debugging
     console.log('Fetched chat rooms:', chatRooms);
 
     res.status(200).json(chatRooms);
