@@ -24,6 +24,12 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+
+app.get('/api', (req, res) => {
+  res.json({ message: 'API is running' });
+}
+);
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/chat', chatRoutes);
