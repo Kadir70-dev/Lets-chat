@@ -8,8 +8,8 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
-  console.log('Hashing password for user:', this.username);
-  console.log('Password before hashing:', this.password);
+  // console.log('Hashing password for user:', this.username);
+  // console.log('Password before hashing:', this.password);
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
   console.log('Password hashed for user:', this.username);
